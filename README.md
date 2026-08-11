@@ -16,7 +16,8 @@ hardware/
   3d/board/                    board 3D models (STL) — for enclosure/fitment design
   3d/printed-base/             the 3D-printed base: base + button + retaining ring (v4)
 firmware/
-  simple-led-remote/           IR-remote LED controller (source + ready-to-flash factory bin)
+  simple-led-remote/           offline IR-remote LED controller (source + ready-to-flash factory bin)
+  recipes/wledkitty.md         full firmware: WLED + audio-reactive + IR + Wi-Fi web UI
 ```
 
 ## Quick start
@@ -31,6 +32,17 @@ firmware/
    ```
 4. **Point the 21-key IR remote** and press a button — colors, white, brightness ±, effects, on/off.
    Firmware details: `firmware/simple-led-remote/README.md`.
+
+## Firmware
+
+Two ways to run the puck:
+
+- **Simple LED Remote** (above) — tiny, offline, no Wi-Fi. Point the 21-key remote and go.
+- **WLEDkitty** — the full experience: the 8 LEDs are **sound-reactive** through the onboard I²S
+  mic, the same IR remote works, and you get the complete WLED web UI over a built-in Wi-Fi AP.
+  Boots into the Freqwave audio visualizer. Browser-flash it at
+  **[scriptkitty.sh](https://scriptkitty.sh)**, or see
+  [`firmware/recipes/wledkitty.md`](firmware/recipes/wledkitty.md).
 
 ## Board at a glance
 
