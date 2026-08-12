@@ -24,20 +24,20 @@ After flashing:
 ## Build from source
 
 Source: **[RetiaLLC/WLEDkitty](https://github.com/RetiaLLC/WLEDkitty)** (branch `wledkitty`),
-a WLED fork carrying the Retia device build envs. The puck's env is `pusheen-puck-audio`.
+a WLED fork carrying the Retia device build envs. The puck's env is `newsheen-puck-audio`.
 
 ```bash
 git clone -b wledkitty https://github.com/RetiaLLC/WLEDkitty && cd WLEDkitty
-pio run -e pusheen-puck-audio          # Python 3.12/3.13 (the ESP32 toolchain rejects 3.14+)
+pio run -e newsheen-puck-audio          # Python 3.12/3.13 (the ESP32 toolchain rejects 3.14+)
 
 # merge a 16 MB DIO factory image
 BOOT_APP0=$(find ~/.platformio/packages/framework-arduinoespressif32*/tools/partitions/boot_app0.bin | head -1)
 esptool --chip esp32s3 merge-bin -o wledkitty-newsheen-puck.factory.bin \
   --flash-mode dio --flash-freq 80m --flash-size 16MB \
-  0x0 .pio/build/pusheen-puck-audio/bootloader.bin \
-  0x8000 .pio/build/pusheen-puck-audio/partitions.bin \
+  0x0 .pio/build/newsheen-puck-audio/bootloader.bin \
+  0x8000 .pio/build/newsheen-puck-audio/partitions.bin \
   0xE000 "$BOOT_APP0" \
-  0x10000 .pio/build/pusheen-puck-audio/firmware.bin
+  0x10000 .pio/build/newsheen-puck-audio/firmware.bin
 ```
 
 ## Why this env — key build flags
