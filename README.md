@@ -43,6 +43,12 @@ Two ways to run the puck:
   Boots into the Freqwave audio visualizer. Browser-flash it at
   **[scriptkitty.sh](https://scriptkitty.sh)**, or see
   [`firmware/recipes/wledkitty.md`](firmware/recipes/wledkitty.md).
+- **[Newsheen Radio](https://github.com/RetiaLLC/NewsheenRadio)** — turns the puck into an
+  internet radio. Streams MP3 and AAC over HTTP and HTTPS, searches tens of thousands of
+  stations, and plots them on a globe you can spin and tap to tune. The 8 LEDs run 15 effects,
+  4 of them driven by a live frequency analysis of the audio. Requires a **MAX98357A amplifier
+  and speaker wired to the J3 header** (see that repo for the pinout). Browser-flash it at
+  **[scriptkitty.sh](https://scriptkitty.sh/#newsheen)**.
 
 ## Board at a glance
 
