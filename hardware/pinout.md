@@ -31,3 +31,35 @@ Round ~55 mm PCB. USB-C (native USB). Designed to sit in the 3D-printed base (`.
 - **IR:** the receiver footprint expects a **GND-in-the-middle** part (VS1838B / TSOP38238). Install
   with the **OUT/signal leg in the square pad** (toward the module); VCC and GND take the outer pads.
   Breakout-style receivers with VCC in the middle will not work.
+
+## Power & battery
+
+Stock power is **USB-C only**. The 3.3 V rail comes from an onboard regulator fed by the 5 V bus,
+and there is no battery-charging circuit on the board.
+
+| Pad | Purpose |
+|---|---|
+| `N-EXT` | external **regulated 5 V** input (corner pad) |
+| `GND` | ground return, beside `N-EXT` |
+| `JP1` | bridge to tie `N-EXT` to the 5 V bus (silk: `SOLDER JP1 FOR EXT PWR`) |
+| `3V3` | regulator **output**. Never drive power into this pad. |
+
+### Running on external 5 V, or adding a battery (advanced)
+
+The Newsheen is designed to stay plugged in over USB-C. It has no battery circuit of its own, and a
+battery is not recommended for beginners: it is an advanced mod you take on at your own risk.
+
+If you want one anyway, external power must be a **regulated 5 V**: a bare 3.7 V LiPo browns the
+board out. Run a cell through a charge-and-boost board set to 5 V, then feed it into the corner
+`N-EXT` pad and a `GND` pad, and bridge the `JP1` jumper beside it (silk: `SOLDER JP1 FOR EXT PWR`).
+
+A known-good combo is a **TP4056** charger (LiPo charge + protection) into an **MT3608** boost
+converter trimmed to **5.0 V**, with the boost output going to `N-EXT`/`GND`.
+
+- **Never put 5 V or a raw battery on the `3V3` pad.** That pad is the regulator's output;
+  back-feeding it can damage the board.
+- Charge the cell through the charger board's own USB, not the Sheen's USB-C.
+- Keep the boost output at 5.0 V. Higher voltages stress the regulator and the WS2812 level shifter.
+
+Part picks and a wiring photo live on the getting-started site
+([catlamp.site](https://catlamp.site)) and in the [Retia Discord](https://discord.gg/cJHNswdSTz).
